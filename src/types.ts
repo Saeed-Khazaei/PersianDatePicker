@@ -1,15 +1,15 @@
 export type PersianDatePickerProps = {
-  input?: boolean;
-};
+  input?: boolean
+}
 
 export interface RenderWeeksProps {
-  month: moment.Moment;
+  month: moment.Moment
 }
 
 export interface WeekProps extends RenderWeeksProps {
-  date: moment.Moment;
+  date: moment.Moment
 }
 
 export type UsePersianDatePicker = {
-  moment(inp?: moment.MomentInput, strict?: boolean): moment.Moment;
-};
+  moment(inp?: moment.MomentInput, strict?: boolean): moment.Moment
+}

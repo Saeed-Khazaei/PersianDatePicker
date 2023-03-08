@@ -4,7 +4,9 @@ import { DayBtn, WeekDayNames } from './styles'
 
 const DayNames = () => (
   <WeekDayNames>
-    {persianDays.map((d) => <DayBtn key={d}>{d}</DayBtn>)}
+    {persianDays.map((d) => (
+      <DayBtn key={d}>{d}</DayBtn>
+    ))}
   </WeekDayNames>
 )
 

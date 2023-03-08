@@ -1,11 +1,9 @@
+import React from 'react'
 import { CustomDay, WeekContainer } from './styles'
 import { WeekProps } from './types'
 import { e2p } from './utilize'
 
-const Week = ({
-  date,
-  month,
-}: WeekProps) => {
+const Week = ({ date, month }: WeekProps) => {
   const days = []
   let i = 0
   let empty = 0

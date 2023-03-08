@@ -1,19 +1,16 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { UsePersianDatePicker } from './types';
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { UsePersianDatePicker } from './types'
 
 const usePersianDatePicker = ({ moment }: UsePersianDatePicker) => {
-  const [showCalendar, setShowCalendar] = useState(false);
-  const inputRef = useRef<HTMLDivElement>(null);
-  const calendarRef = useRef<HTMLDivElement>(null);
-  const [month, setMonth] = useState(moment());
+  const [showCalendar, setShowCalendar] = useState(false)
+  const inputRef = useRef<HTMLDivElement>(null)
+  const calendarRef = useRef<HTMLDivElement>(null)
+  const [month, setMonth] = useState(moment())
 
-  const previous = () => setMonth(month.clone().subtract(1, 'jMonth'));
-  const next = () => setMonth(month.clone().add(1, 'jMonth'));
+  const previous = () => setMonth(month.clone().subtract(1, 'jMonth'))
+  const next = () => setMonth(month.clone().add(1, 'jMonth'))
 
-  const inputTitle = useMemo(
-    () => moment(new Date()).format('jYYYY/jMM/jDD'),
-    []
-  );
+  const inputTitle = useMemo(() => moment(new Date()).format('jYYYY/jMM/jDD'), [])
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -25,19 +22,19 @@ const usePersianDatePicker = ({ moment }: UsePersianDatePicker) => {
         calendarRef.current &&
         !calendarRef.current.contains(e.target as Node)
       ) {
-        setShowCalendar(false);
-        return;
+        setShowCalendar(false)
+        return
       }
-    };
-    window.addEventListener('click', handler);
+    }
+    window.addEventListener('click', handler)
     return () => {
-      window.removeEventListener('click', handler);
-    };
-  }, []);
+      window.removeEventListener('click', handler)
+    }
+  }, [])
 
   const handleInputClick = () => {
-    setShowCalendar(!showCalendar);
-  };
+    setShowCalendar(!showCalendar)
+  }
 
   return {
     showCalendar,
@@ -48,7 +45,7 @@ const usePersianDatePicker = ({ moment }: UsePersianDatePicker) => {
     previous,
     next,
     inputTitle,
-  };
-};
+  }
+}
 
-export default usePersianDatePicker;
+export default usePersianDatePicker

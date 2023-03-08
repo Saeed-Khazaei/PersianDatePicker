@@ -1,4 +1,4 @@
-export const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+export const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']
 
 export const gregorianMonths = [
   'January',
@@ -13,7 +13,7 @@ export const gregorianMonths = [
   'October',
   'November',
   'December',
-];
+]
 
-export const persianDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
-export const gregorianDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+export const persianDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
+export const gregorianDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
