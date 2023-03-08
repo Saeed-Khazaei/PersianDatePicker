@@ -1,8 +1,8 @@
 ## Persian Date Picker
 
-It is a two-way calendar based on Jalaali and Gregorian dates, developed for use in react projects.  
+It is a two-way calendar based on Gregorian and Gregorian dates, developed for use in react projects.  
 This package allows the user to choose a day or time period.  
-What is important is that this calendar supports all standard time formats based on Gregorian date (UTC, ...).
+What is important is that this calendar supports all standard time formats based on Gregorian date (UTC, ...). It is a two-way calendar based on Gregorian and
 
 ---
 
@@ -10,13 +10,13 @@ What is important is that this calendar supports all standard time formats based
 
 To install persian-date-picker, you will need to have [**npm**](https://npmjs.com/) or [**yarn**](https://yarnpkg.com/) installed on your system. Once you have one of these package managers set up, you can install persian-date-picker by running the following command:
 
-```
+```c
 npm i @skhazaei/persian-date-picker
 ```
 
 or
 
-```
+```plaintext
 yarn add @skhazaei/persian-date-picker
 ```
 
@@ -36,10 +36,25 @@ function App() {
 }
 ```
 
+Gregorian Calendar
+
+to use it, you have to pass `isGregorian={true}` to the component:
+
+
+
+```typescript
+import PersianDatePicker from '@skhazaei/persian-date-picker'
+
+function App() {
+  return <PersianDatePicker input={false} isGregorian={true} />
+}
+```
+
 ---
 
 ### Options
 
-| Property | type    | **Description**                                                                                                                 |
-| -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| input    | boolean | by defalute calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
+| Property    | type    | **Description**                                                                                                                 |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| input       | boolean | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
+| isGregorian | boolean | by defalut, this value is `false`.                                                                                              |

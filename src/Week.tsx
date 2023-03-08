@@ -1,17 +1,17 @@
 import React from 'react'
 import { CustomDay, WeekContainer } from './styles'
 import { WeekProps } from './types'
-import { e2p } from './utilize'
+import { e2p, p2e } from './utilize'
 
-const Week = ({ date, month }: WeekProps) => {
+const Week = ({ date, month, isGregorian }: WeekProps) => {
   const days = []
   let i = 0
   let empty = 0
   const now = new Date()
   while (i < 7) {
     const day = {
-      number: date.jDate(),
-      isCurrentMonth: date.jMonth() === month.jMonth(),
+      number: isGregorian ? date.date() : date.jDate(),
+      isCurrentMonth: isGregorian ? date.month() === month.month() : date.jMonth() === month.jMonth(),
       isToday: date.isSame(now, 'day'),
       date,
     }
@@ -24,10 +24,10 @@ const Week = ({ date, month }: WeekProps) => {
       <CustomDay
         isToday={day.isToday ?? false}
         isCurrentMonth={day.isCurrentMonth ?? false}
-        key={`${day.date.format('jYYYY/jMM/jDD')}`}
-        data-id={`${day.date.format('jYYYY/jMM/jDD')}`}
+        key={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
+        data-id={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
       >
-        {e2p(`${day.number}`)}
+        {isGregorian ? p2e(`${day.number}`) : e2p(`${day.number}`)}
       </CustomDay>,
     )
 

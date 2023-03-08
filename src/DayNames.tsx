@@ -1,12 +1,12 @@
 import React from 'react'
-import { persianDays } from './defaultValus'
+import { gregorianDays, persianDays } from './defaultValus'
 import { DayBtn, WeekDayNames } from './styles'
 
-const DayNames = () => (
+const DayNames = ({ isGregorian }: { isGregorian: boolean }) => (
   <WeekDayNames>
-    {persianDays.map((d) => (
-      <DayBtn key={d}>{d}</DayBtn>
-    ))}
+    {isGregorian
+      ? gregorianDays.map((d) => <DayBtn key={d}>{d}</DayBtn>)
+      : persianDays.map((d) => <DayBtn key={d}>{d}</DayBtn>)}
   </WeekDayNames>
 )
 

@@ -51,7 +51,6 @@ export const CustomDay = styled(DayBtn)<{
 }>`
   color: ${(props) => (props.isToday ? '#ff0066' : 'black')};
   border-radius: 8px;
-  color: black;
   border: 1px solid ${(props) => (props.isToday ? '#ff0066' : 'transparent')};
   background-color: transparent;
   visibility: ${(props) => (props.isCurrentMonth ? 'visible' : 'hidden')};

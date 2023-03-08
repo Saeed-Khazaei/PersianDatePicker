@@ -1,9 +1,11 @@
 export type PersianDatePickerProps = {
   input?: boolean
+  isGregorian?: boolean
 }
 
 export interface RenderWeeksProps {
   month: moment.Moment
+  isGregorian: boolean
 }
 
 export interface WeekProps extends RenderWeeksProps {

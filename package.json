@@ -1,6 +1,6 @@
 {
   "name": "@skhazaei/persian-datepicker",
-  "version": "0.0.19",
+  "version": "0.0.2",
   "description": "",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

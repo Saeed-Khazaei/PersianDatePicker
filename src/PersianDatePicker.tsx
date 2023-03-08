@@ -1,21 +1,22 @@
 import moment from 'moment-jalaali'
 import React from 'react'
 import DayNames from './DayNames'
+import { gregorianMonths } from './defaultValus'
 import { RenderWeeks } from './RenderWeeks'
 import { ArrowButton, Calendar, Container, Header, Input } from './styles'
 import { PersianDatePickerProps } from './types'
 import usePersianDatePicker from './usePersianDatePicker'
-import { e2p } from './utilize'
+import { e2p, p2e } from './utilize'
 moment.loadPersian()
 
 const PersianDatePicker = (props: PersianDatePickerProps) => {
-  const { input = true } = props
+  const { input = true, isGregorian = false } = props
 
   const { showCalendar, inputRef, calendarRef, handleInputClick, month, previous, next, inputTitle } =
     usePersianDatePicker({ ...props, moment })
 
   return (
-    <Calendar dir='rtl'>
+    <Calendar dir={isGregorian ? 'ltr' : 'rtl'}>
       {input && (
         <Input ref={inputRef} onClick={handleInputClick}>
           {inputTitle}
@@ -27,14 +28,16 @@ const PersianDatePicker = (props: PersianDatePickerProps) => {
             <span>&#10094;</span>
           </ArrowButton>
           <span role='heading'>
-            {month.format('jMMMM')} {e2p(`${month.format('jYYYY')}`)}
+            {isGregorian
+              ? p2e(`${gregorianMonths[+month.format('M') - 1]} ${month.format('YYYY')}`)
+              : `${month.format('jMMMM')} ${e2p(`${month.format('jYYYY')}`)}`}
           </span>
           <ArrowButton onClick={next}>
             <span>&#10095;</span>
           </ArrowButton>
         </Header>
-        <DayNames />
-        <RenderWeeks month={month} />
+        <DayNames isGregorian={isGregorian} />
+        <RenderWeeks month={month} isGregorian={isGregorian} />
       </Container>
     </Calendar>
   )
