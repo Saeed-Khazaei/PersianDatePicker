@@ -10,7 +10,7 @@ import { e2p, p2e } from './utilize'
 moment.loadPersian()
 
 const PersianDatePicker = (props: PersianDatePickerProps) => {
-  const { input = true, isGregorian = false } = props
+  const { input = true, isGregorian = false, minDate = null, maxDate = null } = props
 
   const {
     showCalendar,
@@ -34,7 +34,10 @@ const PersianDatePicker = (props: PersianDatePickerProps) => {
       )}
       <Container showCalendar={showCalendar} input={input} ref={calendarRef}>
         <Header>
-          <ArrowButton onClick={previous}>
+          <ArrowButton
+            disabled={minDate ? (month > moment(minDate).startOf('jMonth') ? false : true) : false}
+            onClick={previous}
+          >
             <span>&#10094;</span>
           </ArrowButton>
           <span role='heading'>
@@ -42,7 +45,10 @@ const PersianDatePicker = (props: PersianDatePickerProps) => {
               ? p2e(`${gregorianMonths[+month.format('M') - 1]} ${month.format('YYYY')}`)
               : `${month.format('jMMMM')} ${e2p(`${month.format('jYYYY')}`)}`}
           </span>
-          <ArrowButton onClick={next}>
+          <ArrowButton
+            disabled={maxDate ? (month < moment(maxDate).startOf('jMonth') ? false : true) : false}
+            onClick={next}
+          >
             <span>&#10095;</span>
           </ArrowButton>
         </Header>
@@ -55,6 +61,8 @@ const PersianDatePicker = (props: PersianDatePickerProps) => {
           onSelect={onSelect}
           month={month}
           isGregorian={isGregorian}
+          minDate={minDate ? moment(minDate) : null}
+          maxDate={maxDate ? moment(maxDate) : null}
         />
       </Container>
     </Calendar>

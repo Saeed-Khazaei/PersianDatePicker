@@ -2,7 +2,7 @@
 
 It is a two-way calendar based on Gregorian and Gregorian dates, developed for use in react projects.  
 This package allows the user to choose a day or time period.  
-What is important is that this calendar supports all standard time formats based on Gregorian date (UTC, ...). It is a two-way calendar based on Gregorian and
+What is important is that this calendar supports all standard time formats based on Gregorian date (UTC, ...).
 
 ---
 
@@ -52,9 +52,11 @@ function App() {
 
 ### Options
 
-| Property    | type    | **Description**                                                                                                                 |
-| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------- | --- |
-| input       | boolean | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
-| isGregorian | boolean | by defalut, this value is `false`.                                                                                              |
-| selectedDay | `Date`  | _null_                                                                                                                          | _undefined_ |     |
-| onSelectDay | `Date`  |                                                                                                                                 |
+| Property | type | **Description** |
+| --- | --- | --- |
+| input | boolean | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
+| isGregorian | boolean | by defalut, this value is `false`. |
+| selectedDay | `Date` | _null_ | _undefined_ | \- |
+| onSelectDay | `Date` | \- |
+| minDate | `Date` | _null_ | _undefined_ | if you want to disable days before a special day, you need to pass your date as property to the component. |
+| maxDate | `Date` | _null_ | _undefined_ | if you want to disable days a after special day, you need to pass your date as property to the component. |

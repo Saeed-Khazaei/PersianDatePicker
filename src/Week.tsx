@@ -3,7 +3,7 @@ import { CustomDay, WeekContainer } from './styles'
 import { WeekProps } from './types'
 import { e2p, p2e } from './utilize'
 
-const Week = ({ date, month, isGregorian, onSelect, selectedDays }: WeekProps) => {
+const Week = ({ date, month, isGregorian, onSelect, selectedDays, minDate, maxDate }: WeekProps) => {
   const days = []
   let i = 0
   let empty = 0
@@ -17,6 +17,7 @@ const Week = ({ date, month, isGregorian, onSelect, selectedDays }: WeekProps) =
         (selectedDays &&
           ((selectedDays[0] && date.isSame(selectedDays[0])) || (selectedDays[1] && date.isSame(selectedDays[1])))) ??
         false,
+      isDisabled: (maxDate && date.isAfter(maxDate, 'day')) || (minDate && date.isBefore(minDate, 'day')),
       date,
     }
 
@@ -29,6 +30,8 @@ const Week = ({ date, month, isGregorian, onSelect, selectedDays }: WeekProps) =
         isToday={day.isToday ?? false}
         isCurrentMonth={day.isCurrentMonth ?? false}
         isSelectedDay={day.isSelectedDay}
+        isActive={(day.isCurrentMonth && !day.isDisabled) ?? false}
+        isDisabled={day.isDisabled ?? false}
         key={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
         data-id={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
         onClick={() => onSelect(day.date)}

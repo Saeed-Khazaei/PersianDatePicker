@@ -11,8 +11,15 @@ const usePersianDatePicker = ({ moment, selectedDay, isGregorian, onSelectDay }:
     return [selectedDay, null]
   }, [selectedDay])
 
-  const previous = () => setMonth(month.clone().subtract(1, 'jMonth'))
-  const next = () => setMonth(month.clone().add(1, 'jMonth'))
+  const previous = () => {
+    const newMonth = month.clone()
+    setMonth(isGregorian ? newMonth.subtract(1, 'month') : newMonth.subtract(1, 'jMonth'))
+  }
+
+  const next = () => {
+    const newMonth = month.clone()
+    setMonth(isGregorian ? newMonth.add(1, 'month') : newMonth.add(1, 'jMonth'))
+  }
 
   const inputTitle = useMemo(() => moment(new Date()).format('jYYYY/jMM/jDD'), [])
 

@@ -5,3 +5,4 @@ node_modules
 .vscode
 .github
 commitlint.config.js
+README.md

@@ -49,13 +49,16 @@ export const CustomDay = styled(DayBtn)<{
   isToday: boolean
   isCurrentMonth: boolean
   isSelectedDay: boolean
+  isActive: boolean
+  isDisabled: boolean
 }>`
-  cursor: pointer;
+  cursor: ${(props) => (props.isActive ? 'pointer' : 'default')};
   color: ${(props) => (props.isSelectedDay ? '#ffffff' : props.isToday ? '#ff0066' : 'black')};
   border-radius: 8px;
   border: 1px solid ${(props) => (props.isToday ? '#ff0066' : 'transparent')};
   background-color: ${(props) => (props.isSelectedDay ? '#ff0066' : 'transparent')};
   visibility: ${(props) => (props.isCurrentMonth ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.isDisabled ? '50%' : '100%')};
 `
 
 export const Weeks = styled.div`
@@ -88,6 +91,7 @@ export const Header = styled.div`
   justify-content: space-between;
 `
 
-export const ArrowButton = styled(DayBtn)`
+export const ArrowButton = styled(DayBtn)<{ disabled: boolean }>`
   cursor: pointer;
+  visibility: ${(props) => (props.disabled ? 'hidden' : 'visible')};
 `

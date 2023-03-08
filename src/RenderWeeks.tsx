@@ -3,7 +3,7 @@ import { Weeks } from './styles'
 import { RenderWeeksProps } from './types'
 import Week from './Week'
 
-export const RenderWeeks = ({ month, isGregorian, selectedDays, onSelect }: RenderWeeksProps) => {
+export const RenderWeeks = ({ month, isGregorian, selectedDays, onSelect, minDate, maxDate }: RenderWeeksProps) => {
   const weeks = []
   let done = false
   const date = isGregorian ? month.clone().startOf('month').weekday(-5) : month.clone().startOf('jMonth').weekday(0)
@@ -19,6 +19,8 @@ export const RenderWeeks = ({ month, isGregorian, selectedDays, onSelect }: Rend
         key={date.toString()}
         date={date.clone()}
         month={month}
+        minDate={minDate}
+        maxDate={maxDate}
       />,
     )
     date.add(1, 'w')
