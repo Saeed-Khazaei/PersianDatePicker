@@ -48,11 +48,13 @@ export const WeekContainer = styled.div`
 export const CustomDay = styled(DayBtn)<{
   isToday: boolean
   isCurrentMonth: boolean
+  isSelectedDay: boolean
 }>`
-  color: ${(props) => (props.isToday ? '#ff0066' : 'black')};
+  cursor: pointer;
+  color: ${(props) => (props.isSelectedDay ? '#ffffff' : props.isToday ? '#ff0066' : 'black')};
   border-radius: 8px;
   border: 1px solid ${(props) => (props.isToday ? '#ff0066' : 'transparent')};
-  background-color: transparent;
+  background-color: ${(props) => (props.isSelectedDay ? '#ff0066' : 'transparent')};
   visibility: ${(props) => (props.isCurrentMonth ? 'visible' : 'hidden')};
 `
 

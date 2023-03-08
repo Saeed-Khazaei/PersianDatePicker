@@ -3,7 +3,7 @@ import { CustomDay, WeekContainer } from './styles'
 import { WeekProps } from './types'
 import { e2p, p2e } from './utilize'
 
-const Week = ({ date, month, isGregorian }: WeekProps) => {
+const Week = ({ date, month, isGregorian, onSelect, selectedDays }: WeekProps) => {
   const days = []
   let i = 0
   let empty = 0
@@ -13,6 +13,10 @@ const Week = ({ date, month, isGregorian }: WeekProps) => {
       number: isGregorian ? date.date() : date.jDate(),
       isCurrentMonth: isGregorian ? date.month() === month.month() : date.jMonth() === month.jMonth(),
       isToday: date.isSame(now, 'day'),
+      isSelectedDay:
+        (selectedDays &&
+          ((selectedDays[0] && date.isSame(selectedDays[0])) || (selectedDays[1] && date.isSame(selectedDays[1])))) ??
+        false,
       date,
     }
 
@@ -24,8 +28,10 @@ const Week = ({ date, month, isGregorian }: WeekProps) => {
       <CustomDay
         isToday={day.isToday ?? false}
         isCurrentMonth={day.isCurrentMonth ?? false}
+        isSelectedDay={day.isSelectedDay}
         key={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
         data-id={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
+        onClick={() => onSelect(day.date)}
       >
         {isGregorian ? p2e(`${day.number}`) : e2p(`${day.number}`)}
       </CustomDay>,

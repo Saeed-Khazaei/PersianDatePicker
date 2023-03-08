@@ -12,8 +12,18 @@ moment.loadPersian()
 const PersianDatePicker = (props: PersianDatePickerProps) => {
   const { input = true, isGregorian = false } = props
 
-  const { showCalendar, inputRef, calendarRef, handleInputClick, month, previous, next, inputTitle } =
-    usePersianDatePicker({ ...props, moment })
+  const {
+    showCalendar,
+    inputRef,
+    calendarRef,
+    handleInputClick,
+    month,
+    previous,
+    next,
+    inputTitle,
+    selectedDays,
+    onSelect,
+  } = usePersianDatePicker({ ...props, moment })
 
   return (
     <Calendar dir={isGregorian ? 'ltr' : 'rtl'}>
@@ -37,7 +47,15 @@ const PersianDatePicker = (props: PersianDatePickerProps) => {
           </ArrowButton>
         </Header>
         <DayNames isGregorian={isGregorian} />
-        <RenderWeeks month={month} isGregorian={isGregorian} />
+        <RenderWeeks
+          selectedDays={[
+            selectedDays && selectedDays[0] ? moment(selectedDays[0]) : null,
+            selectedDays && selectedDays[1] ? moment(selectedDays[1]) : null,
+          ]}
+          onSelect={onSelect}
+          month={month}
+          isGregorian={isGregorian}
+        />
       </Container>
     </Calendar>
   )

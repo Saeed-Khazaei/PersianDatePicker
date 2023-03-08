@@ -16,7 +16,7 @@ npm i @skhazaei/persian-date-picker
 
 or
 
-```plaintext
+```c
 yarn add @skhazaei/persian-date-picker
 ```
 
@@ -36,11 +36,9 @@ function App() {
 }
 ```
 
-Gregorian Calendar
+#### Gregorian Calendar
 
 to use it, you have to pass `isGregorian={true}` to the component:
-
-
 
 ```typescript
 import PersianDatePicker from '@skhazaei/persian-date-picker'
@@ -55,6 +53,8 @@ function App() {
 ### Options
 
 | Property    | type    | **Description**                                                                                                                 |
-| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------- | --- |
 | input       | boolean | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
 | isGregorian | boolean | by defalut, this value is `false`.                                                                                              |
+| selectedDay | `Date`  | _null_                                                                                                                          | _undefined_ |     |
+| onSelectDay | `Date`  |                                                                                                                                 |

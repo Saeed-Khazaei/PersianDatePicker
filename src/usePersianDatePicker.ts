@@ -1,16 +1,31 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { UsePersianDatePicker } from './types'
 
-const usePersianDatePicker = ({ moment }: UsePersianDatePicker) => {
+const usePersianDatePicker = ({ moment, selectedDay, isGregorian, onSelectDay }: UsePersianDatePicker) => {
   const [showCalendar, setShowCalendar] = useState(false)
   const inputRef = useRef<HTMLDivElement>(null)
   const calendarRef = useRef<HTMLDivElement>(null)
   const [month, setMonth] = useState(moment())
 
+  const selectedDays = useMemo(() => {
+    return [selectedDay, null]
+  }, [selectedDay])
+
   const previous = () => setMonth(month.clone().subtract(1, 'jMonth'))
   const next = () => setMonth(month.clone().add(1, 'jMonth'))
 
   const inputTitle = useMemo(() => moment(new Date()).format('jYYYY/jMM/jDD'), [])
+
+  const handleInputClick = () => {
+    setShowCalendar(!showCalendar)
+  }
+
+  const onSelect = (date: moment.Moment) => {
+    if (!!onSelectDay) {
+      onSelectDay(date.toDate())
+      setShowCalendar(false)
+    }
+  }
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -32,9 +47,13 @@ const usePersianDatePicker = ({ moment }: UsePersianDatePicker) => {
     }
   }, [])
 
-  const handleInputClick = () => {
-    setShowCalendar(!showCalendar)
-  }
+  useEffect(() => {
+    if (selectedDay) {
+      setMonth(moment(selectedDay))
+    } else {
+      setMonth(moment(month ?? new Date()))
+    }
+  }, [selectedDay, isGregorian])
 
   return {
     showCalendar,
@@ -45,6 +64,8 @@ const usePersianDatePicker = ({ moment }: UsePersianDatePicker) => {
     previous,
     next,
     inputTitle,
+    selectedDays,
+    onSelect,
   }
 }
 
