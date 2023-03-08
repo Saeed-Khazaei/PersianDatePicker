@@ -52,12 +52,21 @@ export const CustomDay = styled(DayBtn)<{
   isCurrentMonth: boolean
   isSelectedDay: boolean
   isBetweenRange: boolean
+  selectedBackgroundColor: string
+  selectedTextColor: string
+  rangeBackgroundColor: string
 }>`
   cursor: ${(props) => (props.isActive ? 'pointer' : 'default')};
-  color: ${(props) => (props.isSelectedDay ? '#ffffff' : props.isToday ? '#ff0066' : 'black')};
+  color: ${(props) =>
+    props.isSelectedDay ? props.selectedTextColor : props.isToday ? props.selectedBackgroundColor : 'black'};
   border-radius: 8px;
-  border: 1px solid ${(props) => (props.isToday ? '#ff0066' : 'transparent')};
-  background-color: ${(props) => (props.isBetweenRange ? '#FFE5F0' : props.isSelectedDay ? '#ff0066' : 'transparent')};
+  border: 1px solid ${(props) => (props.isToday ? props.selectedBackgroundColor : 'transparent')};
+  background-color: ${(props) =>
+    props.isBetweenRange
+      ? props.rangeBackgroundColor
+      : props.isSelectedDay
+      ? props.selectedBackgroundColor
+      : 'transparent'};
   opacity: ${(props) => (props.isDisabled ? '50%' : '100%')};
   visibility: ${(props) => (props.isCurrentMonth ? 'visible' : 'hidden')};
 `

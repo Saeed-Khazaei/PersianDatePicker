@@ -10,7 +10,15 @@ import { e2p, p2e } from './utilize'
 moment.loadPersian()
 
 const PersianDatePicker = (props: PersianDatePickerProps) => {
-  const { input = true, isGregorian = false, minDate = null, maxDate = null } = props
+  const {
+    input = true,
+    isGregorian = false,
+    minDate = null,
+    maxDate = null,
+    selectedBackgroundColor = '#ff0066',
+    selectedTextColor = '#ffffff',
+    rangeBackgroundColor = '#ffe5f0',
+  } = props
 
   const {
     showCalendar,
@@ -63,6 +71,9 @@ const PersianDatePicker = (props: PersianDatePickerProps) => {
           isGregorian={isGregorian}
           minDate={minDate ? moment(minDate) : null}
           maxDate={maxDate ? moment(maxDate) : null}
+          selectedBackgroundColor={selectedBackgroundColor}
+          selectedTextColor={selectedTextColor}
+          rangeBackgroundColor={rangeBackgroundColor}
         />
       </Container>
     </Calendar>

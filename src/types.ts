@@ -4,6 +4,7 @@ interface PersianDatePickerDatePickerProps {
   isRange?: false
   rangeDays?: never
   onSelectRange?: never
+  rangeBackgroundColor?: never
 }
 
 interface PersianDatePickerRangePickerProps {
@@ -12,6 +13,7 @@ interface PersianDatePickerRangePickerProps {
   onSelectRange(date: [Date | null, Date | null]): void
   rangeDays: [Date | null, Date | null]
   isRange: true
+  rangeBackgroundColor?: string
 }
 
 type CProps = PersianDatePickerDatePickerProps | PersianDatePickerRangePickerProps
@@ -21,6 +23,8 @@ export type PersianDatePickerProps = CProps & {
   isGregorian?: boolean
   minDate?: Date | null
   maxDate?: Date | null
+  selectedBackgroundColor?: string
+  selectedTextColor?: string
 }
 
 export interface RenderWeeksProps {
@@ -30,6 +34,9 @@ export interface RenderWeeksProps {
   onSelect(date: moment.Moment | string): void
   minDate: moment.Moment | null
   maxDate: moment.Moment | null
+  selectedBackgroundColor: string
+  selectedTextColor: string
+  rangeBackgroundColor: string
 }
 
 export interface WeekProps extends RenderWeeksProps {

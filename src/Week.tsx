@@ -3,7 +3,18 @@ import { CustomDay, WeekContainer } from './styles'
 import { WeekProps } from './types'
 import { e2p, p2e } from './utilize'
 
-const Week = ({ date, month, isGregorian, onSelect, selectedDays, minDate, maxDate }: WeekProps) => {
+const Week = ({
+  date,
+  month,
+  isGregorian,
+  onSelect,
+  selectedDays,
+  minDate,
+  maxDate,
+  selectedBackgroundColor,
+  selectedTextColor,
+  rangeBackgroundColor,
+}: WeekProps) => {
   const days = []
   let i = 0
   let empty = 0
@@ -39,6 +50,9 @@ const Week = ({ date, month, isGregorian, onSelect, selectedDays, minDate, maxDa
         isActive={(day.isCurrentMonth && !day.isDisabled) ?? false}
         isDisabled={day.isDisabled ?? false}
         isBetweenRange={day.isBetween ?? false}
+        selectedBackgroundColor={selectedBackgroundColor}
+        selectedTextColor={selectedTextColor}
+        rangeBackgroundColor={rangeBackgroundColor}
         key={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
         data-id={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
         onClick={() => !day.isDisabled && onSelect(day.date)}
