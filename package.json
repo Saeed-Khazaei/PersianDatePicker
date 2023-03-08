@@ -1,0 +1,73 @@
+{
+  "name": "@skhazaei/persian-datepicker",
+  "version": "0.0.18",
+  "description": "",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saeed-Khazaei/PersianDatePicker.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
+    "prepare": "husky install && npm run build",
+    "prepublishOnly": "npm run prettier && npm run lint"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "dist/*.css"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "date",
+    "datepicker",
+    "persian",
+    "persian-datepicker",
+    "jalaali",
+    "shamsi"
+  ],
+  "author": "Saeed Khazaei (Saeed-Khazaei)",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "dependencies": {
+    "moment-jalaali": "0.9.6",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@types/moment-jalaali": "^0.7.5",
+    "@types/react": "^18.0.12",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "moment-jalaali": "0.9.6",
+    "prettier": "^2.8.4",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.6",
+    "typescript": "^4.7.3"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}
