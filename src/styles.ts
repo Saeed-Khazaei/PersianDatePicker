@@ -46,19 +46,20 @@ export const WeekContainer = styled.div`
 `
 
 export const CustomDay = styled(DayBtn)<{
+  isActive: boolean
   isToday: boolean
+  isDisabled: boolean
   isCurrentMonth: boolean
   isSelectedDay: boolean
-  isActive: boolean
-  isDisabled: boolean
+  isBetweenRange: boolean
 }>`
   cursor: ${(props) => (props.isActive ? 'pointer' : 'default')};
   color: ${(props) => (props.isSelectedDay ? '#ffffff' : props.isToday ? '#ff0066' : 'black')};
   border-radius: 8px;
   border: 1px solid ${(props) => (props.isToday ? '#ff0066' : 'transparent')};
-  background-color: ${(props) => (props.isSelectedDay ? '#ff0066' : 'transparent')};
-  visibility: ${(props) => (props.isCurrentMonth ? 'visible' : 'hidden')};
+  background-color: ${(props) => (props.isBetweenRange ? '#FFE5F0' : props.isSelectedDay ? '#ff0066' : 'transparent')};
   opacity: ${(props) => (props.isDisabled ? '50%' : '100%')};
+  visibility: ${(props) => (props.isCurrentMonth ? 'visible' : 'hidden')};
 `
 
 export const Weeks = styled.div`

@@ -54,9 +54,12 @@ function App() {
 
 | Property | type | **Description** |
 | --- | --- | --- |
-| input | boolean | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
-| isGregorian | boolean | by defalut, this value is `false`. |
-| selectedDay | `Date` | _null_ | _undefined_ | \- |
+| input | `boolean` | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
+| isGregorian | `boolean` | by defalut, this value is `false`. |
+| selectedDay | `Date | null | undefined` | \- |
 | onSelectDay | `Date` | \- |
-| minDate | `Date` | _null_ | _undefined_ | if you want to disable days before a special day, you need to pass your date as property to the component. |
-| maxDate | `Date` | _null_ | _undefined_ | if you want to disable days a after special day, you need to pass your date as property to the component. |
+| minDate | `Date | null | undefined` | if you want to disable days before a special day, you need to pass your date as property to the component. |
+| maxDate | `Date | null | undefined` | if you want to disable days a after special day, you need to pass your date as property to the component. |
+| isRange | `boolean` | When you want use calendar as range picker, you have to add `isRange={true}` as a property to the component. it need also  |
+| rangeDays | \[`Date | null | undefined`,`Date | null | undefined`\] | It accept an array of two values. the first as first date and the last one as last date. |
+| onSelectRange | \[`Date`,`Date`\] | It will return an array of selected range of dates. |

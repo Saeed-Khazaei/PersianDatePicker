@@ -1,8 +1,24 @@
-export type PersianDatePickerProps = {
-  input?: boolean
-  isGregorian?: boolean
+interface PersianDatePickerDatePickerProps {
   selectedDay?: Date | null
   onSelectDay?(date: Date): void
+  isRange?: false
+  rangeDays?: never
+  onSelectRange?: never
+}
+
+interface PersianDatePickerRangePickerProps {
+  selectedDay?: never
+  onSelectDay?: never
+  onSelectRange(date: [Date | null, Date | null]): void
+  rangeDays: [Date | null, Date | null]
+  isRange: true
+}
+
+type CProps = PersianDatePickerDatePickerProps | PersianDatePickerRangePickerProps
+
+export type PersianDatePickerProps = CProps & {
+  input?: boolean
+  isGregorian?: boolean
   minDate?: Date | null
   maxDate?: Date | null
 }

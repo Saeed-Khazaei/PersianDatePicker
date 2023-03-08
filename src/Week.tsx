@@ -18,6 +18,12 @@ const Week = ({ date, month, isGregorian, onSelect, selectedDays, minDate, maxDa
           ((selectedDays[0] && date.isSame(selectedDays[0])) || (selectedDays[1] && date.isSame(selectedDays[1])))) ??
         false,
       isDisabled: (maxDate && date.isAfter(maxDate, 'day')) || (minDate && date.isBefore(minDate, 'day')),
+      isBetween:
+        selectedDays &&
+        selectedDays[0] &&
+        selectedDays[1] &&
+        date.isBefore(selectedDays[1], 'day') &&
+        date.isAfter(selectedDays[0], 'day'),
       date,
     }
 
@@ -32,9 +38,10 @@ const Week = ({ date, month, isGregorian, onSelect, selectedDays, minDate, maxDa
         isSelectedDay={day.isSelectedDay}
         isActive={(day.isCurrentMonth && !day.isDisabled) ?? false}
         isDisabled={day.isDisabled ?? false}
+        isBetweenRange={day.isBetween ?? false}
         key={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
         data-id={`${day.date.format(isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD')}`}
-        onClick={() => onSelect(day.date)}
+        onClick={() => !day.isDisabled && onSelect(day.date)}
       >
         {isGregorian ? p2e(`${day.number}`) : e2p(`${day.number}`)}
       </CustomDay>,
