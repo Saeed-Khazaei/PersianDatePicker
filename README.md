@@ -1,8 +1,6 @@
 ## Persian Date Picker
 
-It is a two-way calendar based on Gregorian and Gregorian dates, developed for use in react projects.  
-This package allows the user to choose a day or time period.  
-What is important is that this calendar supports all standard time formats based on Gregorian date (UTC, ...).
+Persian Date Picker is a lightweight and user-friendly date picker component for React, specifically designed to support the Persian calendar. It offers a seamless two-way conversion between Jalaali and Gregorian dates, making it ideal for developers looking to incorporate the Persian calendar into their React projects. With this package, users can easily choose a date or time period, while also having access to a wide range of standard time formats based on Gregorian dates, including UTC and more. Overall, the Persian Date Picker is a highly versatile and reliable option for anyone looking to integrate a Persian calendar into their React application.
 
 ---
 
