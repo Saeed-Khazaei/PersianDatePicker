@@ -10,13 +10,13 @@ What is important is that this calendar supports all standard time formats based
 
 To install persian-date-picker, you will need to have [**npm**](https://npmjs.com/) or [**yarn**](https://yarnpkg.com/) installed on your system. Once you have one of these package managers set up, you can install persian-date-picker by running the following command:
 
-```c
+```bash
 npm i @skhazaei/persian-date-picker
 ```
 
 or
 
-```c
+```bash
 yarn add @skhazaei/persian-date-picker
 ```
 
@@ -56,12 +56,12 @@ function App() {
 | --------------| -------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | input         | `boolean`                                                | by defalut, calendar has an input to show its value. if you want only use calendar without input you have to pass `false` value |
 | isGregorian   | `boolean`                                                | by defalut, this value is `false`. |
-| selectedDay   | `Date | null `                                | \- |
+| selectedDay   | `Date` \| `null`                                | \- |
 | onSelectDay   | `Date`                                                   | \- |
-| minDate       | `Date | null `                                | if you want to disable days before a special day, you need to pass your date as property to the component. |
-| maxDate       | `Date | null `                                | if you want to disable days a after special day, you need to pass your date as property to the component. |
+| minDate       | `Date` \| `null`                                | if you want to disable days before a special day, you need to pass your date as property to the component. |
+| maxDate       | `Date` \| `null`                                | if you want to disable days a after special day, you need to pass your date as property to the component. |
 | isRange       | `boolean`                                                | When you want use calendar as range picker, you have to add `isRange={true}` as a property to the component. it need also  |
-| rangeDays     | [`Date | null `,`Date | null `]  | It accept an array of two values. the first as first date and the last one as last date. |
+| rangeDays     | [`Date` \| `null` , `Date` \| `null`]  | It accept an array of two values. the first as first date and the last one as last date. |
 | onSelectRange | [`Date`,`Date`]                                        | It will return an array of selected range of dates. |
 | selectedBackgroundColor | `hex`                                       | \- |
 | selectedTextColor | `hex`                                       | \- |
